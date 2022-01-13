@@ -12,11 +12,12 @@ import java.security.spec.X509EncodedKeySpec;
 public class Main {
 
     public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeyException, SignatureException, IOException, InvalidKeySpecException {
-	// write your code here
+
         String messageString = "text";
 
         // Create keypairs
-        /* KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
+        /*
+        KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
         SecureRandom random = SecureRandom.getInstanceStrong();
         keyGen.initialize(2048, random);
 
@@ -34,7 +35,8 @@ public class Main {
         FileOutputStream pubfos = new FileOutputStream("RSAPublicKey.key");
         pubfos.write(encPub);
         pubfos.close();
- */
+        */
+
         // Read keys from file
         Path pathPub = Paths.get("/Users/alexandrseppenen/Development/Java/JWT RSA Encryption/RSAPublicKey.key");
         Path pathPriv = Paths.get("/Users/alexandrseppenen/Development/Java/JWT RSA Encryption/RSAPrivateKey.key");
