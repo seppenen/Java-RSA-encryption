@@ -1,3 +1,3 @@
 # Java 8 RSA encryption
 
-How to make RSA signature and save keys to file, or load from file and verify signature.
+Simple application about how to make RSA signature and file keys, or load from file and verify signature.
