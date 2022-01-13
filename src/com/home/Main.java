@@ -1,8 +1,5 @@
 package com.home;
 
-
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -11,15 +8,15 @@ import java.security.*;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
-import java.time.Instant;
-import java.util.Date;
 
 public class Main {
 
-    public static void main(String[] args) throws NoSuchAlgorithmException, NoSuchProviderException, InvalidKeyException, SignatureException, IOException, InvalidKeySpecException {
+    public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeyException, SignatureException, IOException, InvalidKeySpecException {
 	// write your code here
         String messageString = "text";
-/* KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
+
+        // Create keypairs
+        /* KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
         SecureRandom random = SecureRandom.getInstanceStrong();
         keyGen.initialize(2048, random);
 
@@ -27,6 +24,7 @@ public class Main {
         PrivateKey priv = pair.getPrivate();
         PublicKey pub = pair.getPublic();
 
+        // Save keys to file
         byte[] encPriv = priv.getEncoded();
         FileOutputStream privfos = new FileOutputStream("RSAPrivateKey.key");
         privfos.write(encPriv);
@@ -37,6 +35,7 @@ public class Main {
         pubfos.write(encPub);
         pubfos.close();
  */
+        // Read keys from file
         Path pathPub = Paths.get("/Users/alexandrseppenen/Development/Java/JWT RSA Encryption/RSAPublicKey.key");
         Path pathPriv = Paths.get("/Users/alexandrseppenen/Development/Java/JWT RSA Encryption/RSAPrivateKey.key");
 
