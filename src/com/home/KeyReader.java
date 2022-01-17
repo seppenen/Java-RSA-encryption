@@ -15,6 +15,7 @@ public class KeyReader {
 
     public static void main(String[] args) throws IOException, NoSuchAlgorithmException, InvalidKeyException, SignatureException {
 
+    // Read keys from file
     KeyFactory kf1 = null;
     KeyFactory kf2 = null;
     PublicKey RSAPublicKey = null;
@@ -29,23 +30,20 @@ public class KeyReader {
     X509EncodedKeySpec ks1 = new X509EncodedKeySpec(bytesPub);
     PKCS8EncodedKeySpec ks2 = new PKCS8EncodedKeySpec(bytesPriv);
 
-    {
         try {
             kf1 = KeyFactory.getInstance("RSA");
             kf2 = KeyFactory.getInstance("RSA");
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-    }
 
-    {
+
         try {
             RSAPublicKey = kf1.generatePublic(ks1);
             RSAPrivateKey = kf2.generatePrivate(ks2);
         } catch (InvalidKeySpecException e) {
             e.printStackTrace();
         }
-    }
 
     //Sign data RSA256
     Signature signature = Signature.getInstance("SHA1withRSA");
@@ -54,7 +52,7 @@ public class KeyReader {
         signature.update(message);
     byte[] sigBytes = signature.sign();
 
-    //Validating signature
+    //Signature verification
     Signature signature1 = Signature.getInstance("SHA1withRSA");
         signature1.initVerify(RSAPublicKey);
         signature1.update(message);
