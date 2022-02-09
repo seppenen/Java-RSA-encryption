@@ -1,6 +1,9 @@
 package com.home;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -8,6 +11,8 @@ import java.security.*;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
+import java.util.Base64;
+
 import static com.home.Constants.MESSAGE;
 
 
@@ -45,6 +50,11 @@ public class KeyReader {
             e.printStackTrace();
         }
 
+
+        Base64.Encoder encoder = Base64.getEncoder();
+        byte[] pubKeyBytes = RSAPublicKey.getEncoded();
+        String pubKeyBase64 = encoder.encodeToString(pubKeyBytes);
+        System.out.println(pubKeyBase64);
     //Sign data RSA256
     Signature signature = Signature.getInstance("SHA1withRSA");
         signature.initSign(RSAPrivateKey, new SecureRandom());
@@ -59,6 +69,8 @@ public class KeyReader {
 
     boolean result = signature1.verify(sigBytes);
 
-        System.out.println("Signature verified = "+result);
+
+
+        System.out.println(RSAPublicKey.toString() + " Signature verified = "+result);
 }
 }

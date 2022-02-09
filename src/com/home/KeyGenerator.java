@@ -17,6 +17,7 @@ public class KeyGenerator {
         PrivateKey priv = pair.getPrivate();
         PublicKey pub = pair.getPublic();
 
+
         // Save keys to file
         byte[] encPriv = priv.getEncoded();
         FileOutputStream privfos = new FileOutputStream(Constants.PRIVATE_KEY);
